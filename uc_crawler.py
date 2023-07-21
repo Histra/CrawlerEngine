@@ -62,6 +62,7 @@ class UCCrawler:
                                     executable_path=self.driver_path,
                                     use_subprocess=True, *args, **kwargs)
         else:
+            # if chromedriver version error, try use param `version_main`.
             self.driver = uc.Chrome(headless=self.headless, options=self.opts,
                                     use_subprocess=True, *args, **kwargs)
         self.driver.implicitly_wait(UCCrawlerConfig.implicitly_wait)
@@ -126,6 +127,6 @@ class UCCrawler:
 
 
 if __name__ == '__main__':
-    with UCCrawler(headless=False, driver_path='./chromedriver/v116/chromedriver.exe') as uc:
+    with UCCrawler(headless=False) as uc:
         uc.driver.get('https://etherscan.io/address/0x1f9090aae28b8a3dceadf281b0f12828e676c326')
         input()

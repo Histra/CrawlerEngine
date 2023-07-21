@@ -19,7 +19,7 @@ driver.switch_to.default_content()
 ```python
 # import dependencies 
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support.wait import WebDriverWait
 # wait until element appear
 try:
     WebDriverWait(driver, explicitly_wait_time).until(
@@ -29,7 +29,7 @@ try:
 except Exception as e:
     print(repr(e))
 ```
-+ [More EC.method()](https://www.selenium.dev/selenium/docs/api/py/webdriver_support/selenium.webdriver.support.expected_conditions.html)
+- [More EC.method()](https://www.selenium.dev/selenium/docs/api/py/webdriver_support/selenium.webdriver.support.expected_conditions.html)
 
 上述代码中，Selenium 最多等待 `explicitly_wait_time` 秒，如果在该时间内未找到任何元素，那么触发`TimeoutException`。默认情况下，每`500ms`调用一次检查函数。
 
@@ -54,7 +54,7 @@ try:
 except Exception as e:
     logger.error(f'Login failed. | {repr(e)}')
 ```
-+ [Code Reference](https://selenium-python.readthedocs.io/waits.html)
+- [Code Reference](https://selenium-python.readthedocs.io/waits.html)
 
 ### 3. Code with 2captcha
 
@@ -85,10 +85,11 @@ def solve_reCaptcha_v2(site_key: str, url: str) -> Optional[Dict]:
         logging.warning(f"result's type is not Dict. | {result}")
         return None
 ```
-+ [Code Reference](https://cn.2captcha.com/2captcha-api#solving_recaptchav2_new)
+- [Code Reference](https://cn.2captcha.com/2captcha-api#solving_recaptchav2_new)
+
 需要寻找 `site-key`，一般在`div.g-recaptcha`下：
 ```html
-<div class="g-recaptcha" data-sitekey="6Le1YycTAAAAAJXqwosyiATvJ6Gs2NLn8VEzTVlS">```
+<div class="g-recaptcha" data-sitekey="6Le1YycTAAAAAJXqwosyiATvJ6Gs2NLn8VEzTVlS">
 ```
 `url` 一般设置为`driver.current_url`。
 
